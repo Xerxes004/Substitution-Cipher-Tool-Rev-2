@@ -95,7 +95,7 @@ public class FileParser {
         ciphertextData = cipherData;
     }
     
-    public String getCiphertextData () {
+    public String getCiphertextCalibrationData () {
         return ciphertextData;
     }
     
@@ -124,6 +124,7 @@ public class FileParser {
                         }
                     }
                 }
+                
                 String calTextFieldAppend = new String();
                 String nbsp = System.getProperty("line.separator");
                 
@@ -157,12 +158,15 @@ public class FileParser {
                 
                 rawCipherText = "";
                 while (line.hasNext()) {
-                    String nextLine = line.next();
+                    String nextLine = line.nextLine();
                     for (int i = 0; i < nextLine.length(); i++) {
                         if (Character.isLetter(nextLine.charAt(i))) {
                             countTotalChars++;
                             rawCipherText += nextLine.charAt(i);
                             cipherValues[Character.toUpperCase(nextLine.charAt(i)) - 'A']++;
+                        }
+                        if (Character.isWhitespace(nextLine.charAt(i))) {
+                            rawCipherText += ' ';
                         }
                     }
                 }
