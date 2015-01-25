@@ -44,8 +44,9 @@ public class FileParser {
         
         calibrationData = "";
         ciphertextData = "";
-                
         rawCipherText = "";
+        
+        hasCalibratedBefore = false;
     }
     
         //File used to calibrate (regular text)
@@ -63,6 +64,8 @@ public class FileParser {
     private String calibrationData;
     private String ciphertextData;
     private String rawCipherText;
+    
+    private boolean hasCalibratedBefore;
     
     public void setCalibrationFile (File newCalibrationFile) {
         calibrationFile = newCalibrationFile;
@@ -100,6 +103,10 @@ public class FileParser {
         return rawCipherText;
     }
     
+    public boolean hasCalibratedBefore() {
+        return hasCalibratedBefore;
+    }
+    
     public boolean parseAndCalibrateCalFile () {
         boolean finishedSuccessfully = false;
         if (calibrationFile != null) {
@@ -121,6 +128,8 @@ public class FileParser {
                 String nbsp = System.getProperty("line.separator");
                 
                 sortyByRelativeFrequency();
+                
+                calTextFieldAppend = "";
                 
                 for (int i = 0; i < 26; i++) {
                     calibrationValues[i] = calibrationValues[i] / countTotalChars;
@@ -146,6 +155,7 @@ public class FileParser {
                     //count total characters for relative freq division
                 int countTotalChars = 0;
                 
+                rawCipherText = "";
                 while (line.hasNext()) {
                     String nextLine = line.next();
                     for (int i = 0; i < nextLine.length(); i++) {
@@ -162,6 +172,8 @@ public class FileParser {
                 
                 sortyByRelativeFrequency();
                 
+                ciphertextFieldAppend = "";
+                
                 for (int i = 0; i < 26; i++) {
                     cipherValues[i] = cipherValues[i] / countTotalChars;
                     ciphertextFieldAppend += (cipherAlphabet[i] + ": " + String.format("%.4f",cipherValues[i]) + nbsp);
@@ -172,6 +184,7 @@ public class FileParser {
             catch (FileNotFoundException ex) {
                 System.out.println("File not found: " + ex.getMessage());
             }
+            hasCalibratedBefore = true;
             finishedSuccessfully = true;
         }
         return finishedSuccessfully;
