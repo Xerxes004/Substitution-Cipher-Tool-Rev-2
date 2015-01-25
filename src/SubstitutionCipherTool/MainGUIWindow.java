@@ -18,10 +18,10 @@ public class MainGUIWindow extends javax.swing.JFrame {
         initComponents();
         
         this.setLocationRelativeTo(null);
+        this.pack();
+        this.setTitle("Substitution Cipher Tool - Wesley Kelly, James Von Eiff");
         
         FileSelector.setDialogTitle("Select File");
-        
-        this.setTitle("Substitution Cipher Tool - Wesley Kelly, James Von Eiff");
         
         parser = new FileParser();
     }
@@ -40,12 +40,11 @@ public class MainGUIWindow extends javax.swing.JFrame {
         FileSelector = new javax.swing.JFileChooser();
         WarningDialog = new javax.swing.JDialog();
         WarningDialogPanel = new javax.swing.JPanel();
-        WarningLabel = new javax.swing.JLabel();
         WarningIcon = new javax.swing.JLabel();
         CancelButton = new javax.swing.JButton();
         RecalibrateButton = new javax.swing.JButton();
-        ErrorMessageScrollPane = new javax.swing.JScrollPane();
-        ErrorMessageTextArea = new javax.swing.JTextArea();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         jMenu3 = new javax.swing.JMenu();
         MainWindowPane = new javax.swing.JPanel();
         CalibrationFileSelectorLabel = new javax.swing.JLabel();
@@ -55,16 +54,10 @@ public class MainGUIWindow extends javax.swing.JFrame {
         CalibrationFileBrowserLabel = new javax.swing.JLabel();
         CipherFileBrowserLabel = new javax.swing.JLabel();
         CalibrateButton = new javax.swing.JButton();
-        CalibrationDataLabel = new javax.swing.JLabel();
-        CipherFileDataLabel = new javax.swing.JLabel();
-        DecipherButton = new javax.swing.JButton();
         CalFreqScrollPane = new javax.swing.JScrollPane();
         CalibrationDataFieldTextArea = new javax.swing.JTextArea();
         CipherFreqScrollPane = new javax.swing.JScrollPane();
         CipherDataFieldTextArea = new javax.swing.JTextArea();
-        CipherFreqLabel = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
-        jComboBox2 = new javax.swing.JComboBox();
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -72,10 +65,13 @@ public class MainGUIWindow extends javax.swing.JFrame {
         RawCipherTextArea = new javax.swing.JTextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
         CurrentGuessTextArea = new javax.swing.JTextArea();
-        jLabel3 = new javax.swing.JLabel();
         CalibrationFileCheckBox = new javax.swing.JCheckBox();
         CipherFileCheckBox = new javax.swing.JCheckBox();
         jLabel4 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
+        SetGuessToCipherButton = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         FileMenu = new javax.swing.JMenu();
         SaveCurrentGuess = new javax.swing.JMenuItem();
@@ -84,15 +80,14 @@ public class MainGUIWindow extends javax.swing.JFrame {
         FileSelector.setDialogType(javax.swing.JFileChooser.CUSTOM_DIALOG);
         FileSelector.setCurrentDirectory(new java.io.File("D:\\Dropbox\\Cedarville\\2-Sophomore\\Spring 2015\\Computer Security\\Programming Projects\\Proj 1\\shakespeare_cipher.txt"));
 
-        WarningDialog.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        WarningDialog.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         WarningDialog.setForeground(new java.awt.Color(255, 255, 255));
-        WarningDialog.setMinimumSize(new java.awt.Dimension(351, 222));
+        WarningDialog.setMinimumSize(new java.awt.Dimension(203, 144));
         WarningDialog.setResizable(false);
 
         WarningDialogPanel.setBackground(new java.awt.Color(255, 255, 255));
-
-        WarningLabel.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
-        WarningLabel.setText("Warning");
+        WarningDialogPanel.setMaximumSize(new java.awt.Dimension(203, 144));
+        WarningDialogPanel.setMinimumSize(new java.awt.Dimension(203, 144));
 
         WarningIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/SubstitutionCipherTool/genericwarning.jpeg"))); // NOI18N
 
@@ -103,40 +98,38 @@ public class MainGUIWindow extends javax.swing.JFrame {
             }
         });
 
-        RecalibrateButton.setText("Recalibrate");
+        RecalibrateButton.setText("Accept");
+        RecalibrateButton.setDefaultCapable(false);
         RecalibrateButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 RecalibrateButtonActionPerformed(evt);
             }
         });
 
-        ErrorMessageTextArea.setEditable(false);
-        ErrorMessageTextArea.setColumns(20);
-        ErrorMessageTextArea.setLineWrap(true);
-        ErrorMessageTextArea.setRows(5);
-        ErrorMessageTextArea.setText("Recalibrating will overwrite all existing calibrations and Raw Data boxes.\n\nContinue?");
-        ErrorMessageTextArea.setToolTipText("");
-        ErrorMessageTextArea.setWrapStyleWord(true);
-        ErrorMessageTextArea.setAutoscrolls(false);
-        ErrorMessageScrollPane.setViewportView(ErrorMessageTextArea);
+        jLabel3.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel3.setText("This will overwrite your current guess.");
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel5.setText("Warning");
 
         javax.swing.GroupLayout WarningDialogPanelLayout = new javax.swing.GroupLayout(WarningDialogPanel);
         WarningDialogPanel.setLayout(WarningDialogPanelLayout);
         WarningDialogPanelLayout.setHorizontalGroup(
             WarningDialogPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, WarningDialogPanelLayout.createSequentialGroup()
+            .addGroup(WarningDialogPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(WarningDialogPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(ErrorMessageScrollPane)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, WarningDialogPanelLayout.createSequentialGroup()
-                        .addComponent(RecalibrateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(CancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(WarningDialogPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(WarningDialogPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel3)
+                        .addGroup(WarningDialogPanelLayout.createSequentialGroup()
+                            .addComponent(RecalibrateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(CancelButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(WarningDialogPanelLayout.createSequentialGroup()
-                        .addComponent(WarningLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel5)
+                        .addGap(76, 76, 76)
                         .addComponent(WarningIcon)))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         WarningDialogPanelLayout.setVerticalGroup(
             WarningDialogPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -144,13 +137,13 @@ public class MainGUIWindow extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(WarningDialogPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(WarningIcon)
-                    .addComponent(WarningLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ErrorMessageScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jLabel5))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel3)
+                .addGap(14, 14, 14)
                 .addGroup(WarningDialogPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(CancelButton)
-                    .addComponent(RecalibrateButton))
+                    .addComponent(RecalibrateButton)
+                    .addComponent(CancelButton))
                 .addContainerGap())
         );
 
@@ -162,23 +155,25 @@ public class MainGUIWindow extends javax.swing.JFrame {
         );
         WarningDialogLayout.setVerticalGroup(
             WarningDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(WarningDialogPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(WarningDialogPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         jMenu3.setText("jMenu3");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Substitution Cipher Tool - Wesley Kelly, James Von Eiff");
+        setBackground(new java.awt.Color(255, 255, 255));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        setMinimumSize(new java.awt.Dimension(1000, 839));
+        setMinimumSize(new java.awt.Dimension(1, 1));
         setResizable(false);
 
         MainWindowPane.setName("Substitution Cipher Cracker"); // NOI18N
 
         CalibrationFileSelectorLabel.setBackground(new java.awt.Color(255, 255, 255));
-        CalibrationFileSelectorLabel.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        CalibrationFileSelectorLabel.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
         CalibrationFileSelectorLabel.setText(" ");
         CalibrationFileSelectorLabel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        CalibrationFileSelectorLabel.setOpaque(true);
 
         SelectCalibrationFileButton.setText("Select Calibration File...");
         SelectCalibrationFileButton.addActionListener(new java.awt.event.ActionListener() {
@@ -188,9 +183,10 @@ public class MainGUIWindow extends javax.swing.JFrame {
         });
 
         CipherFileSelectorLabel.setBackground(new java.awt.Color(255, 255, 255));
-        CipherFileSelectorLabel.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        CipherFileSelectorLabel.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
         CipherFileSelectorLabel.setText("  ");
         CipherFileSelectorLabel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        CipherFileSelectorLabel.setOpaque(true);
 
         SelectCipherFileButton.setText("Select Cipher File...");
         SelectCipherFileButton.addActionListener(new java.awt.event.ActionListener() {
@@ -210,17 +206,7 @@ public class MainGUIWindow extends javax.swing.JFrame {
             }
         });
 
-        CalibrationDataLabel.setText("Calibration Freqs:");
-
-        CipherFileDataLabel.setText("Cipher File Raw Data:");
-
-        DecipherButton.setText("Decipher Guess");
-        DecipherButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DecipherButtonActionPerformed(evt);
-            }
-        });
-
+        CalFreqScrollPane.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), "Calibration Freqs", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.ABOVE_TOP, new java.awt.Font("Arial", 0, 12))); // NOI18N
         CalFreqScrollPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         CalFreqScrollPane.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
         CalFreqScrollPane.setMaximumSize(new java.awt.Dimension(90, 500));
@@ -229,16 +215,18 @@ public class MainGUIWindow extends javax.swing.JFrame {
         CalFreqScrollPane.setRequestFocusEnabled(false);
 
         CalibrationDataFieldTextArea.setEditable(false);
+        CalibrationDataFieldTextArea.setBackground(new java.awt.Color(250, 250, 250));
         CalibrationDataFieldTextArea.setColumns(20);
         CalibrationDataFieldTextArea.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
         CalibrationDataFieldTextArea.setRows(4);
         CalibrationDataFieldTextArea.setTabSize(4);
         CalibrationDataFieldTextArea.setAutoscrolls(false);
+        CalibrationDataFieldTextArea.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         CalibrationDataFieldTextArea.setMaximumSize(new java.awt.Dimension(90, 500));
         CalibrationDataFieldTextArea.setMinimumSize(new java.awt.Dimension(90, 500));
-        CalibrationDataFieldTextArea.setPreferredSize(new java.awt.Dimension(90, 500));
         CalFreqScrollPane.setViewportView(CalibrationDataFieldTextArea);
 
+        CipherFreqScrollPane.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), "Cipher Freqs", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.ABOVE_TOP, new java.awt.Font("Arial", 0, 12))); // NOI18N
         CipherFreqScrollPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         CipherFreqScrollPane.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
         CipherFreqScrollPane.setMaximumSize(new java.awt.Dimension(90, 500));
@@ -246,45 +234,56 @@ public class MainGUIWindow extends javax.swing.JFrame {
         CipherFreqScrollPane.setPreferredSize(new java.awt.Dimension(90, 500));
 
         CipherDataFieldTextArea.setEditable(false);
+        CipherDataFieldTextArea.setBackground(new java.awt.Color(250, 250, 250));
         CipherDataFieldTextArea.setColumns(20);
         CipherDataFieldTextArea.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
         CipherDataFieldTextArea.setRows(5);
+        CipherDataFieldTextArea.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         CipherDataFieldTextArea.setMaximumSize(new java.awt.Dimension(90, 500));
         CipherDataFieldTextArea.setMinimumSize(new java.awt.Dimension(90, 500));
-        CipherDataFieldTextArea.setPreferredSize(new java.awt.Dimension(90, 500));
         CipherFreqScrollPane.setViewportView(CipherDataFieldTextArea);
 
-        CipherFreqLabel.setText("Cipher Freqs:");
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         jButton1.setText("Swap");
+        jButton1.setToolTipText("");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
-        jLabel1.setText("Cipher");
+        jLabel1.setText("Swap");
 
-        jLabel2.setText("Guess");
+        jLabel2.setText("with");
 
+        jScrollPane1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true), "Cipher File Raw Data", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12))); // NOI18N
+        jScrollPane1.setMaximumSize(new java.awt.Dimension(500, 250));
+        jScrollPane1.setMinimumSize(new java.awt.Dimension(500, 250));
+        jScrollPane1.setPreferredSize(new java.awt.Dimension(500, 250));
+
+        RawCipherTextArea.setBackground(new java.awt.Color(250, 250, 250));
         RawCipherTextArea.setColumns(20);
-        RawCipherTextArea.setFont(new java.awt.Font("Courier New", 0, 18)); // NOI18N
+        RawCipherTextArea.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
         RawCipherTextArea.setLineWrap(true);
         RawCipherTextArea.setRows(5);
-        RawCipherTextArea.setMinimumSize(new java.awt.Dimension(533, 350));
+        RawCipherTextArea.setWrapStyleWord(true);
+        RawCipherTextArea.setMaximumSize(new java.awt.Dimension(500, 250));
+        RawCipherTextArea.setMinimumSize(new java.awt.Dimension(1, 1));
         jScrollPane1.setViewportView(RawCipherTextArea);
 
+        jScrollPane2.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true), "Current Guess", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12))); // NOI18N
+        jScrollPane2.setMaximumSize(new java.awt.Dimension(500, 250));
+        jScrollPane2.setMinimumSize(new java.awt.Dimension(500, 250));
+        jScrollPane2.setPreferredSize(new java.awt.Dimension(500, 250));
+
+        CurrentGuessTextArea.setBackground(new java.awt.Color(250, 250, 250));
         CurrentGuessTextArea.setColumns(20);
-        CurrentGuessTextArea.setFont(new java.awt.Font("Courier New", 0, 18)); // NOI18N
+        CurrentGuessTextArea.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
         CurrentGuessTextArea.setLineWrap(true);
         CurrentGuessTextArea.setRows(5);
+        CurrentGuessTextArea.setWrapStyleWord(true);
+        CurrentGuessTextArea.setMaximumSize(new java.awt.Dimension(500, 250));
+        CurrentGuessTextArea.setMinimumSize(new java.awt.Dimension(1, 1));
         jScrollPane2.setViewportView(CurrentGuessTextArea);
-
-        jLabel3.setText("Current Guess:");
 
         CalibrationFileCheckBox.setText("Calibration File");
         CalibrationFileCheckBox.addActionListener(new java.awt.event.ActionListener() {
@@ -301,7 +300,17 @@ public class MainGUIWindow extends javax.swing.JFrame {
         });
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel4.setText("Letter Swapper");
+        jLabel4.setText("Cipher Freq Letter Swapper");
+
+        jButton2.setText("Map Cipher");
+        jButton2.setToolTipText("Maps the Calibration Frequency straight across to the Cipher Frequency");
+
+        SetGuessToCipherButton.setText("Set Guess to Cipher Text");
+        SetGuessToCipherButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SetGuessToCipherButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout MainWindowPaneLayout = new javax.swing.GroupLayout(MainWindowPane);
         MainWindowPane.setLayout(MainWindowPaneLayout);
@@ -311,36 +320,27 @@ public class MainGUIWindow extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(MainWindowPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(MainWindowPaneLayout.createSequentialGroup()
-                        .addGroup(MainWindowPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(CalFreqScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(CipherFreqScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(MainWindowPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(MainWindowPaneLayout.createSequentialGroup()
-                                .addGroup(MainWindowPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(CalibrationDataLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(CalFreqScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(MainWindowPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(CipherFreqLabel)
-                                    .addGroup(MainWindowPaneLayout.createSequentialGroup()
-                                        .addComponent(CipherFreqScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(MainWindowPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel1)
-                                            .addGroup(MainWindowPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                .addComponent(jComboBox1, 0, 103, Short.MAX_VALUE)
-                                                .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                            .addComponent(jLabel2)
-                                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel4)))))
-                            .addComponent(DecipherButton, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(22, 22, 22)
+                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(SetGuessToCipherButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(MainWindowPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(MainWindowPaneLayout.createSequentialGroup()
-                                .addComponent(CipherFileDataLabel)
-                                .addContainerGap())
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(MainWindowPaneLayout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(0, 0, Short.MAX_VALUE))))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 601, Short.MAX_VALUE)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(MainWindowPaneLayout.createSequentialGroup()
                         .addGroup(MainWindowPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(CalibrationFileBrowserLabel)
@@ -366,52 +366,47 @@ public class MainGUIWindow extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(MainWindowPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(MainWindowPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(SelectCalibrationFileButton)
                         .addComponent(CalibrateButton)
                         .addComponent(CalibrationFileCheckBox)
                         .addComponent(CipherFileCheckBox))
                     .addGroup(MainWindowPaneLayout.createSequentialGroup()
                         .addGroup(MainWindowPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(CalibrationFileSelectorLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(CalibrationFileBrowserLabel))
+                            .addComponent(CalibrationFileBrowserLabel)
+                            .addComponent(SelectCalibrationFileButton))
                         .addGap(3, 3, 3)))
                 .addGroup(MainWindowPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(CipherFileSelectorLabel)
                     .addComponent(SelectCipherFileButton)
                     .addComponent(CipherFileBrowserLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(MainWindowPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(CalibrationDataLabel)
-                    .addComponent(CipherFileDataLabel)
-                    .addComponent(CipherFreqLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(MainWindowPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(MainWindowPaneLayout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE))
-                    .addGroup(MainWindowPaneLayout.createSequentialGroup()
-                        .addGroup(MainWindowPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(MainWindowPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(MainWindowPaneLayout.createSequentialGroup()
+                                .addGap(20, 20, 20)
                                 .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel1)
+                                .addGroup(MainWindowPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jButton1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel2)
+                                .addComponent(jButton2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton1))
-                            .addComponent(CipherFreqScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(CalFreqScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(SetGuessToCipherButton)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(DecipherButton)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(MainWindowPaneLayout.createSequentialGroup()
+                        .addGroup(MainWindowPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(CalFreqScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(CipherFreqScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(40, Short.MAX_VALUE))))
         );
 
         FileMenu.setText("File");
@@ -433,16 +428,47 @@ public class MainGUIWindow extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(MainWindowPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(MainWindowPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(MainWindowPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(MainWindowPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    
+    private void RecalibrateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RecalibrateButtonActionPerformed
+        CurrentGuessTextArea.setText(parser.getRawCiphertext());
+        CurrentGuessTextArea.setCaretPosition(0);
+        WarningDialog.dispose();
+    }//GEN-LAST:event_RecalibrateButtonActionPerformed
+
+    private void CancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelButtonActionPerformed
+        WarningDialog.dispose();
+    }//GEN-LAST:event_CancelButtonActionPerformed
+
+    private void SetGuessToCipherButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SetGuessToCipherButtonActionPerformed
+        WarningDialog.setVisible(true);
+        WarningDialog.setLocationRelativeTo(null);
+        WarningDialog.pack();
+    }//GEN-LAST:event_SetGuessToCipherButtonActionPerformed
+
+    private void CipherFileCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CipherFileCheckBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CipherFileCheckBoxActionPerformed
+
+    private void CalibrationFileCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CalibrationFileCheckBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CalibrationFileCheckBoxActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void CalibrateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CalibrateButtonActionPerformed
         if(CalibrationFileCheckBox.isSelected()) {
@@ -454,24 +480,18 @@ public class MainGUIWindow extends javax.swing.JFrame {
         }
 
         if (CipherFileCheckBox.isSelected()) {
-            if (parser.hasCalibratedBefore()) {
-                WarningDialog.setVisible(true);
-                WarningDialog.pack();
-                WarningDialog.setLocationRelativeTo(null);
+            if(parser.parseAndCalibrateCipherFile()) {
+                CipherDataFieldTextArea.setText(parser.getCiphertextData());
+                RawCipherTextArea.setText(parser.getRawCiphertext());
+                RawCipherTextArea.setCaretPosition(0);
             } else {
-                if(parser.parseAndCalibrateCipherFile()) {
-                    CipherDataFieldTextArea.setText(parser.getCiphertextData());
-                    RawCipherTextArea.setText(parser.getRawCiphertext());
-                    CurrentGuessTextArea.setText(parser.getRawCiphertext());
-                } else {
-                    CipherFileSelectorLabel.setText("No file selected");
-                }
+                CipherFileSelectorLabel.setText("No file selected");
             }
         }
     }//GEN-LAST:event_CalibrateButtonActionPerformed
-    
+
     private void SelectCipherFileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectCipherFileButtonActionPerformed
-            //if we select the cipher file (select the "open" option or double click)
+        //if we select the cipher file (select the "open" option or double click)
         if (FileSelector.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
             parser.setCipherFile(FileSelector.getSelectedFile());
             CipherFileSelectorLabel.setText(parser.getCipherFile().getName());
@@ -479,52 +499,12 @@ public class MainGUIWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_SelectCipherFileButtonActionPerformed
 
     private void SelectCalibrationFileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectCalibrationFileButtonActionPerformed
-            //if we select the cipher file (select the "open" option or double click)
+        //if we select the cipher file (select the "open" option or double click)
         if (FileSelector.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
             parser.setCalibrationFile(FileSelector.getSelectedFile());
             CalibrationFileSelectorLabel.setText(parser.getCalibrationFile().getName());
         }
     }//GEN-LAST:event_SelectCalibrationFileButtonActionPerformed
-
-    private void DecipherButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DecipherButtonActionPerformed
-        
-    }//GEN-LAST:event_DecipherButtonActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void RecalibrateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RecalibrateButtonActionPerformed
-        if(CalibrationFileCheckBox.isSelected()) {    
-            if(parser.parseAndCalibrateCalFile()) {
-                CalibrationDataFieldTextArea.setText(parser.getCalibrationData());
-            } else {
-                CalibrationFileSelectorLabel.setText("No file selected");
-            }
-        }
-        
-        if (CipherFileCheckBox.isSelected()) {
-            if(parser.parseAndCalibrateCipherFile()) {
-                CipherDataFieldTextArea.setText(parser.getCiphertextData());
-                RawCipherTextArea.setText(parser.getRawCiphertext());
-            } else {
-                CipherFileSelectorLabel.setText("No file selected");
-            }
-        }
-        WarningDialog.dispose();
-    }//GEN-LAST:event_RecalibrateButtonActionPerformed
-
-    private void CancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelButtonActionPerformed
-        WarningDialog.dispose();
-    }//GEN-LAST:event_CancelButtonActionPerformed
-
-    private void CalibrationFileCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CalibrationFileCheckBoxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CalibrationFileCheckBoxActionPerformed
-
-    private void CipherFileCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CipherFileCheckBoxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CipherFileCheckBoxActionPerformed
 
     
     /**
@@ -566,7 +546,6 @@ public class MainGUIWindow extends javax.swing.JFrame {
     private javax.swing.JScrollPane CalFreqScrollPane;
     private javax.swing.JButton CalibrateButton;
     private javax.swing.JTextArea CalibrationDataFieldTextArea;
-    private javax.swing.JLabel CalibrationDataLabel;
     private javax.swing.JLabel CalibrationFileBrowserLabel;
     private javax.swing.JCheckBox CalibrationFileCheckBox;
     private javax.swing.JLabel CalibrationFileSelectorLabel;
@@ -574,14 +553,9 @@ public class MainGUIWindow extends javax.swing.JFrame {
     private javax.swing.JTextArea CipherDataFieldTextArea;
     private javax.swing.JLabel CipherFileBrowserLabel;
     private javax.swing.JCheckBox CipherFileCheckBox;
-    private javax.swing.JLabel CipherFileDataLabel;
     private javax.swing.JLabel CipherFileSelectorLabel;
-    private javax.swing.JLabel CipherFreqLabel;
     private javax.swing.JScrollPane CipherFreqScrollPane;
     private javax.swing.JTextArea CurrentGuessTextArea;
-    private javax.swing.JButton DecipherButton;
-    private javax.swing.JScrollPane ErrorMessageScrollPane;
-    private javax.swing.JTextArea ErrorMessageTextArea;
     private javax.swing.JMenuItem ExitProgramMenuItem;
     private javax.swing.JMenu FileMenu;
     private javax.swing.JFileChooser FileSelector;
@@ -591,20 +565,22 @@ public class MainGUIWindow extends javax.swing.JFrame {
     private javax.swing.JMenuItem SaveCurrentGuess;
     private javax.swing.JButton SelectCalibrationFileButton;
     private javax.swing.JButton SelectCipherFileButton;
+    private javax.swing.JButton SetGuessToCipherButton;
     private javax.swing.JDialog WarningDialog;
     private javax.swing.JPanel WarningDialogPanel;
     private javax.swing.JLabel WarningIcon;
-    private javax.swing.JLabel WarningLabel;
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox jComboBox1;
-    private javax.swing.JComboBox jComboBox2;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 }
