@@ -45,8 +45,6 @@ public class FileParser {
         calibrationData = "";
         ciphertextData = "";
         rawCipherText = "";
-        
-        hasCalibratedBefore = false;
     }
     
         //File used to calibrate (regular text)
@@ -65,52 +63,80 @@ public class FileParser {
     private String ciphertextData;
     private String rawCipherText;
     
-    private boolean hasCalibratedBefore;
-    
+    /**
+     * Sets the calibration file (non-cipher text)
+     * @param newCalibrationFile the non-cipher file to be used as calibration
+     */
     public void setCalibrationFile (File newCalibrationFile) {
         calibrationFile = newCalibrationFile;
     }
-    
+    /**
+     * Gets the calibration file (non-cipher text)
+     * @return the non-cipher file used as calibration
+     */
     public File getCalibrationFile () {
         return calibrationFile;
     }
-    
+    /**
+     * Sets the cipher file (substitution cipher-text)
+     * @param newCipherFile the cipher-text file to be deciphered
+     */
     public void setCipherFile (File newCipherFile) {
         cipherFile = newCipherFile;
     }
-    
+    /**
+     * Gets the cipher file (substitution cipher-text)
+     * @return the cipher-text file
+     */
     public File getCipherFile () {
         return cipherFile;
     }
-    
+    /**
+     * Sets the calibration data
+     * @param calData data from the Calibration File
+     */
     private void setCalibrationData (String calData) {
         calibrationData = calData;
     }
-    
+    /**
+     * Gets the parsed data of the calibration file
+     * @return data from the Calibration file
+     */
     public String getCalibrationData () {
         return calibrationData;
     }
-    
+    /**
+     * Sets the ciphertext data
+     * @param cipherData 
+     */
     private void setCiphertextData (String cipherData) {
         ciphertextData = cipherData;
     }
-    
+    /**
+     * Gets the calibrated ciphertext data
+     * @return calibrated ciphertext data
+     */
     public String getCiphertextCalibrationData () {
         return ciphertextData;
     }
-    
+    /**
+     * Gets the raw ciphertext input
+     * @return the raw ciphertext input
+     */
     public String getRawCiphertext() {
         return rawCipherText;
     }
-    
-    public boolean hasCalibratedBefore() {
-        return hasCalibratedBefore;
-    }
-    
-    public boolean parseAndCalibrateCalFile () {
+    /**
+     * Parses, calibrates, sorts, and stores the calibration (plain-text) file. 
+     * @return whether or not the calibration was successful
+     */
+    public boolean parseAndCalibratePlaintextFile() {
+        
         boolean finishedSuccessfully = false;
+            //if a file is selected
         if (calibrationFile != null) {
             try {
+                    //make a new scanner with the calibration file selected
                 Scanner line = new Scanner(calibrationFile);
                     //count total characters for relative freq division
                 int countTotalChars = 0;
@@ -125,16 +151,17 @@ public class FileParser {
                     }
                 }
                 
-                String calTextFieldAppend = new String();
-                String nbsp = System.getProperty("line.separator");
+                String newLine = System.getProperty("line.separator");
+                    //sort the arrays
+                sortAllArraysByRelFreq();
                 
-                sortyByRelativeFrequency();
-                
-                calTextFieldAppend = "";
-                
+                String calTextFieldAppend = "";
+                    
                 for (int i = 0; i < 26; i++) {
+                        //store relative frequencies rather than counts
                     calibrationValues[i] = calibrationValues[i] / countTotalChars;
-                    calTextFieldAppend += (calibrationAlphabet[i] + ": " + String.format("%.4f",calibrationValues[i]) + nbsp);
+                        //parse calibration data
+                    calTextFieldAppend += (calibrationAlphabet[i] + ": " + String.format("%.4f",calibrationValues[i]) + newLine);
                 }
                 
                 setCalibrationData(calTextFieldAppend);
@@ -147,9 +174,14 @@ public class FileParser {
         
         return finishedSuccessfully;
     }
-    
+    /**
+     * Parses, calibrates, sorts, and stores the cipher (substitution cipher-text) file. 
+     * @return whether or not the calibration was successful
+     */
     public boolean parseAndCalibrateCipherFile () {
+        
         boolean finishedSuccessfully = false;
+            //if a file is selected
         if (cipherFile != null) {
             try {
                 Scanner line = new Scanner(cipherFile);
@@ -171,16 +203,17 @@ public class FileParser {
                     }
                 }
                 
-                String ciphertextFieldAppend = new String();
-                String nbsp = System.getProperty("line.separator");
+                String newLine = System.getProperty("line.separator");
+                    //Sort the arrays
+                sortAllArraysByRelFreq();
                 
-                sortyByRelativeFrequency();
-                
-                ciphertextFieldAppend = "";
-                
+                String ciphertextFieldAppend = "";
+                    
                 for (int i = 0; i < 26; i++) {
+                        //store relative frequencies rather than counts
                     cipherValues[i] = cipherValues[i] / countTotalChars;
-                    ciphertextFieldAppend += (cipherAlphabet[i] + ": " + String.format("%.4f",cipherValues[i]) + nbsp);
+                        //parse cipher calibration data
+                    ciphertextFieldAppend += (cipherAlphabet[i] + ": " + String.format("%.4f",cipherValues[i]) + newLine);
                 }
                 
                 setCiphertextData(ciphertextFieldAppend);
@@ -188,20 +221,23 @@ public class FileParser {
             catch (FileNotFoundException ex) {
                 System.out.println("File not found: " + ex.getMessage());
             }
-            hasCalibratedBefore = true;
             finishedSuccessfully = true;
         }
         return finishedSuccessfully;
     }
-    
+    /**
+     * Resets both alphabets
+     */
     private void initAlphabets() {
         for (int i = 0; i < 26; i++) {
             calibrationAlphabet[i] = (char)('A' + i);
             cipherAlphabet[i] = (char)('A' + i);
         }
     }
-    
-    private void sortyByRelativeFrequency() {
+    /**
+     * Sorts all calibration data and alphabets by relative frequency
+     */
+    private void sortAllArraysByRelFreq() {
         double tempDoub;
         char tempChar;
         
