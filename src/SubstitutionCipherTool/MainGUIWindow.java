@@ -1,17 +1,18 @@
 /**
- * Author : Wesley Kelly
+ * Title      : Cipher File Parser
+ * Description: An input .txt "cipher" file is input to the system, and
+ *              its letter frequencies are analyzed and made available to the
+ *              user.
+ * Copyright  : Copyright (c) 2015, Wesley Kelly, Cedarville University
+ * Company    : N/A
+ * @author    : Wesley Kelly, James Von Eiff
+ * @version 1.0
  */
+
 package SubstitutionCipherTool;
-import java.io.FileFilter;
-import java.io.File;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-
-/**
- *
- * @author WesKellyPC
- */
 public class MainGUIWindow extends javax.swing.JFrame {
 
     /**
