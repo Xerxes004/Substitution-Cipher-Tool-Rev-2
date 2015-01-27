@@ -2,7 +2,10 @@
  * Author : Wesley Kelly
  */
 package SubstitutionCipherTool;
+import java.io.FileFilter;
+import java.io.File;
 import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 
 /**
@@ -25,6 +28,8 @@ public class MainGUIWindow extends javax.swing.JFrame {
         
         cipherParser = new CipherFileParser();
         calibrationParser = new CalibrationFileParser();
+        FileNameExtensionFilter textFilter = new FileNameExtensionFilter("*.txt", "txt", "TXT");
+        FileSelector.setFileFilter(textFilter);
     }
     
     private final CalibrationFileParser calibrationParser;
