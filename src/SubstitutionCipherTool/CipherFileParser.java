@@ -1,10 +1,11 @@
 /**
- * Title : Cipher File Parser Description: An input .txt "cipher" file is input
- * to the system, and its letter frequencies are analyzed and made available to
- * the user. Copyright : Copyright (c) 2015, Wesley Kelly, Cedarville University
- * Company : N/A
+ * Title:     Cipher File Parser Description: An input .txt "cipher" file is input
+ *            to the system, and its letter frequencies are analyzed and made available to
+ *            the user. 
+ * Copyright: Copyright (c) 2015, Wesley Kelly, Cedarville University
+ * Company:   N/A
  *
- * @author : Wesley Kelly
+ * @author:   Wesley Kelly
  * @version 1.0
  */
 package SubstitutionCipherTool;
@@ -151,5 +152,4 @@ public class CipherFileParser {
             this.ciphertextData = cipherTextFieldAppend;
         }
     }
-
 }

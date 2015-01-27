@@ -79,7 +79,7 @@ public class MainGUIWindow extends javax.swing.JFrame {
         ExitProgramMenuItem = new javax.swing.JMenuItem();
 
         FileSelector.setDialogType(javax.swing.JFileChooser.CUSTOM_DIALOG);
-        FileSelector.setCurrentDirectory(new java.io.File("D:\\Dropbox\\Cedarville\\2-Sophomore\\Spring 2015\\Computer Security\\Programming Projects\\Proj 1\\shakespeare_cipher.txt"));
+        FileSelector.setCurrentDirectory(new java.io.File("E:\\Program Files (x86)\\Netbeans 8.0\\NetBeans 8.0"));
 
         WarningDialog.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         WarningDialog.setForeground(new java.awt.Color(255, 255, 255));
@@ -211,7 +211,7 @@ public class MainGUIWindow extends javax.swing.JFrame {
         CalibrationDataFieldTextArea.setEditable(false);
         CalibrationDataFieldTextArea.setBackground(new java.awt.Color(250, 250, 250));
         CalibrationDataFieldTextArea.setColumns(20);
-        CalibrationDataFieldTextArea.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
+        CalibrationDataFieldTextArea.setFont(new java.awt.Font("Courier New", 0, 16)); // NOI18N
         CalibrationDataFieldTextArea.setRows(4);
         CalibrationDataFieldTextArea.setTabSize(4);
         CalibrationDataFieldTextArea.setAutoscrolls(false);
@@ -230,7 +230,7 @@ public class MainGUIWindow extends javax.swing.JFrame {
         CipherDataFieldTextArea.setEditable(false);
         CipherDataFieldTextArea.setBackground(new java.awt.Color(250, 250, 250));
         CipherDataFieldTextArea.setColumns(20);
-        CipherDataFieldTextArea.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
+        CipherDataFieldTextArea.setFont(new java.awt.Font("Courier New", 0, 16)); // NOI18N
         CipherDataFieldTextArea.setRows(5);
         CipherDataFieldTextArea.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         CipherDataFieldTextArea.setMaximumSize(new java.awt.Dimension(90, 500));
