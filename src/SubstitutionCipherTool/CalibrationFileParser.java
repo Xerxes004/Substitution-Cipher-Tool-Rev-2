@@ -1,5 +1,12 @@
 /**
- * Author : Wesley Kelly
+ * Title      : Cipher File Parser
+ * Description: An input .txt "cipher" file is input to the system, and
+ *              its letter frequencies are analyzed and made available to the
+ *              user.
+ * Copyright  : Copyright (c) 2015, Wesley Kelly, Cedarville University
+ * Company    : N/A
+ * @author    : Wesley Kelly
+ * @version 1.0
  */
 package SubstitutionCipherTool;
 
@@ -7,10 +14,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-/**
- *
- * @author WesKellyPC
- */
 public class CalibrationFileParser {
     
     public CalibrationFileParser() {
@@ -61,7 +64,6 @@ public class CalibrationFileParser {
     public String getCalibrationData () {
         return calibrationData;
     }
-    
     /**
      * Parses, calibrates, sorts, and stores the calibration (plain-text) file. 
      * @return whether or not the calibration was successful
@@ -89,7 +91,7 @@ public class CalibrationFileParser {
                 
                 String newLine = System.getProperty("line.separator");
                     //sort the arrays
-                sortAllArraysByRelFreq();
+                sortCalibrationDataByRelFreq();
                 
                 String calTextFieldAppend = "";
                     
@@ -121,7 +123,7 @@ public class CalibrationFileParser {
     /**
      * Sorts all calibration data and alphabets by relative frequency
      */
-    private void sortAllArraysByRelFreq() {
+    private void sortCalibrationDataByRelFreq() {
         double tempDoub;
         char tempChar;
         
