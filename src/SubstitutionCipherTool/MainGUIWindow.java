@@ -56,7 +56,7 @@ public class MainGUIWindow extends javax.swing.JFrame {
         WarningIcon = new javax.swing.JLabel();
         CancelButton = new javax.swing.JButton();
         RecalibrateButton = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
+        WarningDialogText = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jMenu3 = new javax.swing.JMenu();
         MainWindowPane = new javax.swing.JPanel();
@@ -90,7 +90,7 @@ public class MainGUIWindow extends javax.swing.JFrame {
         ExitProgramMenuItem = new javax.swing.JMenuItem();
 
         FileSelector.setDialogType(javax.swing.JFileChooser.CUSTOM_DIALOG);
-        FileSelector.setCurrentDirectory(new java.io.File("/"));
+        FileSelector.setCurrentDirectory(new java.io.File("C:\\Program Files (x86)\\NetBeans 8.0"));
 
         WarningDialog.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         WarningDialog.setForeground(new java.awt.Color(255, 255, 255));
@@ -118,8 +118,8 @@ public class MainGUIWindow extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel3.setText("This will overwrite your current guess.");
+        WarningDialogText.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        WarningDialogText.setText("This will overwrite your current guess.");
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel5.setText("Warning");
@@ -132,7 +132,7 @@ public class MainGUIWindow extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(WarningDialogPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(WarningDialogPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel3)
+                        .addComponent(WarningDialogText)
                         .addGroup(WarningDialogPanelLayout.createSequentialGroup()
                             .addComponent(RecalibrateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -151,7 +151,7 @@ public class MainGUIWindow extends javax.swing.JFrame {
                     .addComponent(WarningIcon)
                     .addComponent(jLabel5))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel3)
+                .addComponent(WarningDialogText)
                 .addGap(14, 14, 14)
                 .addGroup(WarningDialogPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(RecalibrateButton)
@@ -609,9 +609,9 @@ public class MainGUIWindow extends javax.swing.JFrame {
     private javax.swing.JLabel SwapLabel;
     private javax.swing.JDialog WarningDialog;
     private javax.swing.JPanel WarningDialogPanel;
+    private javax.swing.JLabel WarningDialogText;
     private javax.swing.JLabel WarningIcon;
     private javax.swing.JTextField firstLetterToSwap;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JTextField secondLetterToSwap;
