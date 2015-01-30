@@ -32,7 +32,7 @@ public class MainGUIWindow extends javax.swing.JFrame {
         
         cipherParser = new CipherFileParser();
         calibrationParser = new CalibrationFileParser();
-        decipherer = new Decipherer(calibrationParser, cipherParser);
+        decipherer = new Decipherer();
         FileNameExtensionFilter textFilter = new FileNameExtensionFilter("*.txt", "txt", "TXT");
         FileSelector.setFileFilter(textFilter);
     }
@@ -532,6 +532,12 @@ public class MainGUIWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_ExitProgramMenuItemActionPerformed
 
     private void MapCipherButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MapCipherButtonActionPerformed
+        if((calibrationParser != null) && (cipherParser != null)) {
+            decipherer.decipherCipher(calibrationParser, cipherParser);
+            CurrentGuessTextArea.setText(decipherer.getCurrentGuess());
+        }
+        
+        CurrentGuessTextArea.setCaretPosition(0);
         
     }//GEN-LAST:event_MapCipherButtonActionPerformed
 

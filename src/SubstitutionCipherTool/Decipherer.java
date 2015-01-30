@@ -21,13 +21,17 @@ public class Decipherer {
     private char[] cipherFreq;
     //This holds the calibrated frequencies
     private char[] calibFreq;
-    
-    private CipherFileParser fileParser;
+
     
     //Empty constructor
-    public Decipherer(CalibrationFileParser cali, CipherFileParser ciph) {
-        
-        fileParser = ciph;
+    public Decipherer() {
+        currentGuess = "";
+        originalCipher = "";
+        cipherFreq = new char[26];
+        calibFreq = new char[26];
+    }
+    
+    public void decipherCipher(CalibrationFileParser cali, CipherFileParser ciph) {
         currentGuess = "";
         originalCipher = ciph.getRawCiphertext();
         for(int i = 0; i < 26; i++){
@@ -37,26 +41,20 @@ public class Decipherer {
         for(int i = 0; i < 26; i++){
             calibFreq[i] = cali.getCalibrationAlphabet()[i];
         }    
-        
-    }
-    
-    public String decipherCipher() {
-        for(int i = 0; i < 26; i++){
-            cipherFreq[i] = fileParser.getCipherAlphabet()[i];
-        }  
-        
         for(int i = 0; i < originalCipher.length(); i++) {
             char letter = originalCipher.charAt(i);
-            for(int j = 0; j < 26; j++) {
-                if(letter == cipherFreq[j]) {
-                    currentGuess += calibFreq[j];
-                } else if(Character.isWhitespace(letter)) {
+            if(Character.isWhitespace(letter)) {
                     currentGuess += " ";
+            } else {
+                for(int j = 0; j < 26; j++) {
+                    if(letter == cipherFreq[j]) {
+                        currentGuess += calibFreq[j];
+                    }
                 }
+
             }
         }
         
-        return currentGuess;
     }
     
     public String getCurrentGuess() {
