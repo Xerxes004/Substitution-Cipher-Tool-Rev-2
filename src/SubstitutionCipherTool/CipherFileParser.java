@@ -34,6 +34,13 @@ public class CipherFileParser {
         this.rawCipherText = "";
     }
 
+    public char[] getCipherAlphabet () throws NullPointerException {
+        if (cipherAlphabet == null) {
+            throw new NullPointerException("No cipher alphabet found");
+        }
+        return cipherAlphabet;
+    }
+    
     public void setCipherFile(File newCipherFile) {
         this.cipherFile = newCipherFile;
     }
