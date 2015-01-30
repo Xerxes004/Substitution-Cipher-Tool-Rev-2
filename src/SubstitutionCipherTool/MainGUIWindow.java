@@ -10,6 +10,8 @@
  */
 
 package SubstitutionCipherTool;
+import java.io.FileNotFoundException;
+import javafx.stage.FileChooser;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
@@ -85,7 +87,7 @@ public class MainGUIWindow extends javax.swing.JFrame {
         ExitProgramMenuItem = new javax.swing.JMenuItem();
 
         FileSelector.setDialogType(javax.swing.JFileChooser.CUSTOM_DIALOG);
-        FileSelector.setCurrentDirectory(new java.io.File("E:\\Program Files (x86)\\Netbeans 8.0\\NetBeans 8.0"));
+        FileSelector.setCurrentDirectory(new java.io.File("C:\\Program Files (x86)\\NetBeans 8.0"));
 
         WarningDialog.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         WarningDialog.setForeground(new java.awt.Color(255, 255, 255));
@@ -399,10 +401,20 @@ public class MainGUIWindow extends javax.swing.JFrame {
 
         SaveCurrentGuess.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
         SaveCurrentGuess.setText("Save Current Guess...");
+        SaveCurrentGuess.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SaveCurrentGuessActionPerformed(evt);
+            }
+        });
         FileMenu.add(SaveCurrentGuess);
 
         ExitProgramMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, java.awt.event.InputEvent.ALT_MASK));
         ExitProgramMenuItem.setText("Exit Program");
+        ExitProgramMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ExitProgramMenuItemActionPerformed(evt);
+            }
+        });
         FileMenu.add(ExitProgramMenuItem);
 
         MenuBar.add(FileMenu);
@@ -429,16 +441,19 @@ public class MainGUIWindow extends javax.swing.JFrame {
         CurrentGuessTextArea.setText(cipherParser.getRawCiphertext());
         CurrentGuessTextArea.setCaretPosition(0);
         WarningDialog.dispose();
+        MainWindowPane.repaint();
     }//GEN-LAST:event_RecalibrateButtonActionPerformed
 
     private void CancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelButtonActionPerformed
         WarningDialog.dispose();
+        MainWindowPane.repaint();
     }//GEN-LAST:event_CancelButtonActionPerformed
 
     private void SetGuessToCipherButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SetGuessToCipherButtonActionPerformed
         WarningDialog.setVisible(true);
         WarningDialog.setLocationRelativeTo(null);
         WarningDialog.pack();
+        MainWindowPane.repaint();
     }//GEN-LAST:event_SetGuessToCipherButtonActionPerformed
 
     private void SwapButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SwapButtonActionPerformed
@@ -452,6 +467,7 @@ public class MainGUIWindow extends javax.swing.JFrame {
             cipherParser.swapLettersInCipher(firstChar, secondChar);
             CipherDataFieldTextArea.setText(cipherParser.getCiphertextCalibrationData());
         }
+        MainWindowPane.repaint();
     }//GEN-LAST:event_SwapButtonActionPerformed
 
     private void SelectCipherFileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectCipherFileButtonActionPerformed
@@ -466,6 +482,7 @@ public class MainGUIWindow extends javax.swing.JFrame {
                 RawCipherTextArea.setCaretPosition(0);
             }
         }
+        MainWindowPane.repaint();
     }//GEN-LAST:event_SelectCipherFileButtonActionPerformed
 
     private void SelectCalibrationFileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectCalibrationFileButtonActionPerformed
@@ -479,7 +496,32 @@ public class MainGUIWindow extends javax.swing.JFrame {
                 CalibrationDataFieldTextArea.setCaretPosition(0);
             }
         }
+        MainWindowPane.repaint();
     }//GEN-LAST:event_SelectCalibrationFileButtonActionPerformed
+
+    private void SaveCurrentGuessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveCurrentGuessActionPerformed
+        /*
+        Open file browser
+        Name new file
+        Save new file with current guess data
+        */
+        JFileChooser saveFile = new JFileChooser(".");
+        FileNameExtensionFilter textFilter = new FileNameExtensionFilter("*.txt", "txt", "TXT");
+        saveFile.setFileFilter(textFilter);
+        saveFile.showSaveDialog(null);
+        
+        try {
+            java.io.PrintWriter guessSaver = new java.io.PrintWriter(saveFile.getSelectedFile());
+            //guessSaver.printf(decipherer.getCurrentGuess());
+        }
+        catch (FileNotFoundException ex) {
+            System.out.println("File not found: " + ex.getMessage());
+        }
+    }//GEN-LAST:event_SaveCurrentGuessActionPerformed
+
+    private void ExitProgramMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitProgramMenuItemActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_ExitProgramMenuItemActionPerformed
 
     
     /**

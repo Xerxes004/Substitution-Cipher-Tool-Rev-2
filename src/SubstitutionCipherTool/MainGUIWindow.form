@@ -160,6 +160,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Save Current Guess..."/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SaveCurrentGuessActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="ExitProgramMenuItem">
               <Properties>
@@ -168,6 +171,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Exit Program"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ExitProgramMenuItemActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>

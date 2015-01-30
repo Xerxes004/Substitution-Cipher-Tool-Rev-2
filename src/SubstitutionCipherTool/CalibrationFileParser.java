@@ -37,6 +37,16 @@ public class CalibrationFileParser {
     private String calibrationData;
     
     /**
+     * Returns the calibration alphabet stored internally
+     * @return 
+     */
+    public char[] getCalibrationAlphabet() throws NullPointerException {
+        if (calibrationAlphabet == null) {
+            throw new NullPointerException("No calibration alphabet found");
+        }
+        return calibrationAlphabet;
+    }
+    /**
      * Sets the calibration file (non-cipher text)
      * @param newCalibrationFile the non-cipher file to be used as calibration
      */
