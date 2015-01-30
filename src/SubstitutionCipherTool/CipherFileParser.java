@@ -73,7 +73,7 @@ public class CipherFileParser {
                 while (line.hasNext()) {
                     String nextLine = line.nextLine();
                     for (int i = 0; i < nextLine.length(); i++) {
-                        if (Character.isLetter(nextLine.charAt(i))) {
+                        if (Character.toUpperCase(nextLine.charAt(i)) <= 'Z' && Character.toUpperCase(nextLine.charAt(i)) >= 'A') {
                             countTotalChars++;
                             this.rawCipherText += nextLine.charAt(i);
                             this.cipherValues[(Character.toUpperCase(nextLine.charAt(i)) - 'A')] += 1.0D;
