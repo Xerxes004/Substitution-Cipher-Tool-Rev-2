@@ -78,19 +78,25 @@ public class MainGUIWindow extends javax.swing.JFrame {
         CurrentGuessScrollPane = new javax.swing.JScrollPane();
         CurrentGuessTextArea = new javax.swing.JTextArea();
         CipherFreqLetterSwapperLabel = new javax.swing.JLabel();
-        firstLetterToSwap = new javax.swing.JTextField();
-        secondLetterToSwap = new javax.swing.JTextField();
+        firstCipherFreqLetterToSwap = new javax.swing.JTextField();
+        secondCipherFreqLetterToSwap = new javax.swing.JTextField();
         MapCipherButton = new javax.swing.JButton();
         SetGuessToCipherButton = new javax.swing.JButton();
         HelpTextScrollPane = new javax.swing.JScrollPane();
         HelpTextTextArea = new javax.swing.JTextArea();
+        firstCurrentGuessLetterToSwap = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        secondCurrentGuessLetterToSwap = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        CurrentGuessLetterSwapperButton = new javax.swing.JButton();
         MenuBar = new javax.swing.JMenuBar();
         FileMenu = new javax.swing.JMenu();
         SaveCurrentGuess = new javax.swing.JMenuItem();
         ExitProgramMenuItem = new javax.swing.JMenuItem();
 
         FileSelector.setDialogType(javax.swing.JFileChooser.CUSTOM_DIALOG);
-        FileSelector.setCurrentDirectory(new java.io.File("C:\\Program Files (x86)\\NetBeans 8.0"));
+        FileSelector.setCurrentDirectory(new java.io.File("E:\\Program Files (x86)\\Netbeans 8.0\\NetBeans 8.0"));
 
         WarningDialog.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         WarningDialog.setForeground(new java.awt.Color(255, 255, 255));
@@ -295,6 +301,10 @@ public class MainGUIWindow extends javax.swing.JFrame {
         CipherFreqLetterSwapperLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         CipherFreqLetterSwapperLabel.setText("Cipher Freq Letter Swapper");
 
+        firstCipherFreqLetterToSwap.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        secondCipherFreqLetterToSwap.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
         MapCipherButton.setText("Map Cipher");
         MapCipherButton.setToolTipText("Maps the Calibration Frequency straight across to the Cipher Frequency");
         MapCipherButton.addActionListener(new java.awt.event.ActionListener() {
@@ -318,9 +328,27 @@ public class MainGUIWindow extends javax.swing.JFrame {
         HelpTextTextArea.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         HelpTextTextArea.setLineWrap(true);
         HelpTextTextArea.setRows(5);
-        HelpTextTextArea.setText("After calibrating both files, use the Cipher Letter Swapper to swap letters in the \"Cipher Freqs\" box. \n\nUse the \"Map Cipher\" button to map Calibration Freqs letters to the Cipher Freqs letters.");
+        HelpTextTextArea.setText("After calibrating both files, use the Letter Swapper to swap letters in the \"Current Guess\" box. \n\nUse the \"Map Cipher\" button to map Calibration Freqs letters to the Cipher Freqs letters.");
         HelpTextTextArea.setWrapStyleWord(true);
         HelpTextScrollPane.setViewportView(HelpTextTextArea);
+
+        firstCurrentGuessLetterToSwap.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        jLabel1.setText("Swap");
+
+        jLabel2.setText("with");
+
+        secondCurrentGuessLetterToSwap.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel3.setText("Current Guess Swapper");
+
+        CurrentGuessLetterSwapperButton.setText("Swap");
+        CurrentGuessLetterSwapperButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CurrentGuessLetterSwapperButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout MainWindowPaneLayout = new javax.swing.GroupLayout(MainWindowPane);
         MainWindowPane.setLayout(MainWindowPaneLayout);
@@ -333,21 +361,39 @@ public class MainGUIWindow extends javax.swing.JFrame {
                         .addComponent(CalFreqScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(CipherFreqScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(MainWindowPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(MainWindowPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(MainWindowPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(MainWindowPaneLayout.createSequentialGroup()
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGroup(MainWindowPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addGroup(MainWindowPaneLayout.createSequentialGroup()
+                                            .addComponent(SwapLabel)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(firstCipherFreqLetterToSwap, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(withLabel)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(secondCipherFreqLetterToSwap, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(SetGuessToCipherButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(MapCipherButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(SwapButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(CipherFreqLetterSwapperLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addGroup(MainWindowPaneLayout.createSequentialGroup()
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(HelpTextScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(MainWindowPaneLayout.createSequentialGroup()
-                                .addComponent(SwapLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(firstLetterToSwap, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(withLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(secondLetterToSwap, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(SetGuessToCipherButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(MapCipherButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(SwapButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(CipherFreqLetterSwapperLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(HelpTextScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                                .addGroup(MainWindowPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(MainWindowPaneLayout.createSequentialGroup()
+                                        .addComponent(jLabel1)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(firstCurrentGuessLetterToSwap, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel2)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(secondCurrentGuessLetterToSwap, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel3)
+                                    .addComponent(CurrentGuessLetterSwapperButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(MainWindowPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(RawCipherScrollPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -391,17 +437,28 @@ public class MainGUIWindow extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(MainWindowPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(SwapLabel)
-                            .addComponent(firstLetterToSwap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(firstCipherFreqLetterToSwap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(withLabel)
-                            .addComponent(secondLetterToSwap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(secondCipherFreqLetterToSwap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(SwapButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(MapCipherButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(SetGuessToCipherButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(HelpTextScrollPane)))
+                        .addGroup(MainWindowPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(firstCurrentGuessLetterToSwap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2)
+                            .addComponent(secondCurrentGuessLetterToSwap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(CurrentGuessLetterSwapperButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(HelpTextScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -465,11 +522,11 @@ public class MainGUIWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_SetGuessToCipherButtonActionPerformed
 
     private void SwapButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SwapButtonActionPerformed
-        char firstChar = firstLetterToSwap.getText().toCharArray()[0];
-        char secondChar = secondLetterToSwap.getText().toCharArray()[0];
+        char firstChar = firstCipherFreqLetterToSwap.getText().toCharArray()[0];
+        char secondChar = secondCipherFreqLetterToSwap.getText().toCharArray()[0];
         
-        firstLetterToSwap.setText(Character.toString(Character.toUpperCase(firstChar)));
-        secondLetterToSwap.setText(Character.toString(Character.toUpperCase(secondChar)));
+        firstCipherFreqLetterToSwap.setText(Character.toString(Character.toUpperCase(firstChar)));
+        secondCipherFreqLetterToSwap.setText(Character.toString(Character.toUpperCase(secondChar)));
         
         if (Character.isLetter(firstChar) && Character.isLetter(secondChar)) {
             cipherParser.swapLettersInCipher(firstChar, secondChar);
@@ -541,6 +598,21 @@ public class MainGUIWindow extends javax.swing.JFrame {
         
     }//GEN-LAST:event_MapCipherButtonActionPerformed
 
+    private void CurrentGuessLetterSwapperButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CurrentGuessLetterSwapperButtonActionPerformed
+        char firstChar = firstCurrentGuessLetterToSwap.getText().toCharArray()[0];
+        char secondChar = secondCurrentGuessLetterToSwap.getText().toCharArray()[0];
+        
+        firstCurrentGuessLetterToSwap.setText(Character.toString(Character.toUpperCase(firstChar)));
+        secondCurrentGuessLetterToSwap.setText(Character.toString(Character.toUpperCase(secondChar)));
+        
+        if (Character.isLetter(firstChar) && Character.isLetter(secondChar)) {
+            decipherer.swapLettersInCurrentGuess(firstChar, secondChar);
+            CurrentGuessTextArea.setText(decipherer.getCurrentGuess());
+        }
+        CurrentGuessTextArea.setCaretPosition(0);
+        MainWindowPane.repaint();
+    }//GEN-LAST:event_CurrentGuessLetterSwapperButtonActionPerformed
+
     
     /**
      * @param args the command line arguments
@@ -588,6 +660,7 @@ public class MainGUIWindow extends javax.swing.JFrame {
     private javax.swing.JLabel CipherFileSelectorLabel;
     private javax.swing.JLabel CipherFreqLetterSwapperLabel;
     private javax.swing.JScrollPane CipherFreqScrollPane;
+    private javax.swing.JButton CurrentGuessLetterSwapperButton;
     private javax.swing.JScrollPane CurrentGuessScrollPane;
     private javax.swing.JTextArea CurrentGuessTextArea;
     private javax.swing.JMenuItem ExitProgramMenuItem;
@@ -611,10 +684,15 @@ public class MainGUIWindow extends javax.swing.JFrame {
     private javax.swing.JPanel WarningDialogPanel;
     private javax.swing.JLabel WarningDialogText;
     private javax.swing.JLabel WarningIcon;
-    private javax.swing.JTextField firstLetterToSwap;
+    private javax.swing.JTextField firstCipherFreqLetterToSwap;
+    private javax.swing.JTextField firstCurrentGuessLetterToSwap;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JMenu jMenu3;
-    private javax.swing.JTextField secondLetterToSwap;
+    private javax.swing.JTextField secondCipherFreqLetterToSwap;
+    private javax.swing.JTextField secondCurrentGuessLetterToSwap;
     private javax.swing.JLabel withLabel;
     // End of variables declaration//GEN-END:variables
 }

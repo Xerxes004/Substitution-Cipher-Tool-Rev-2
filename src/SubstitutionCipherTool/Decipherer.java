@@ -56,6 +56,28 @@ public class Decipherer {
         }
         
     }
+        //wk
+    public void swapLettersInCurrentGuess(char firstChar, char secondChar) {
+        String newGuess = "";//= currentGuess;
+        firstChar = Character.toUpperCase(firstChar);
+        secondChar = Character.toUpperCase(secondChar);
+        
+        for (int i = 0; i < currentGuess.length(); i++) {
+            char letter = currentGuess.charAt(i);
+            if(Character.isWhitespace(letter)) {
+                newGuess += " ";
+            } else {
+                if(letter == firstChar) {
+                    newGuess += secondChar;
+                } else if (letter == secondChar) {
+                    newGuess += firstChar;
+                } else {
+                    newGuess += Character.toUpperCase(letter);
+                }
+            }
+        }
+        currentGuess = newGuess;
+    }
     
     public String getCurrentGuess() {
         
