@@ -25,6 +25,7 @@ public class CalibrationFileParser {
         }
         
         calibrationAlphabet = new char[26];
+        
         calibrationData = "";
     }
     
@@ -122,9 +123,7 @@ public class CalibrationFileParser {
         
         return finishedSuccessfully;
     }
-    /**
-     * Resets both alphabets
-     */
+    
     private void initAlphabet() {
         for (int i = 0; i < 26; i++) {
             calibrationAlphabet[i] = (char)('A' + i);
