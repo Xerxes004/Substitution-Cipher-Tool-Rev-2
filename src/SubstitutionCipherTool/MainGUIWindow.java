@@ -11,7 +11,6 @@
 
 package SubstitutionCipherTool;
 import java.io.FileNotFoundException;
-import javafx.stage.FileChooser;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
@@ -577,7 +576,8 @@ public class MainGUIWindow extends javax.swing.JFrame {
         
         try {
             java.io.PrintWriter guessSaver = new java.io.PrintWriter(saveFile.getSelectedFile());
-            guessSaver.printf(decipherer.getCurrentGuess());
+            guessSaver.println(CurrentGuessTextArea.getText());
+            guessSaver.close();
         }
         catch (FileNotFoundException ex) {
             System.out.println("File not found: " + ex.getMessage());

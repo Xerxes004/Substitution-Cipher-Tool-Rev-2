@@ -93,7 +93,7 @@ public class CalibrationFileParser {
                 while (line.hasNext()) {
                     String nextLine = line.next();
                     for (int i = 0; i < nextLine.length(); i++) {
-                        if (Character.isLetter(nextLine.charAt(i))) {
+                         if (Character.toUpperCase(nextLine.charAt(i)) <= 'Z' && Character.toUpperCase(nextLine.charAt(i)) >= 'A') {
                             countTotalChars++;
                             calibrationValues[Character.toUpperCase(nextLine.charAt(i)) - 'A']++;
                         }
