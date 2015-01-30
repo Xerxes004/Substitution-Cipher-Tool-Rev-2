@@ -29,14 +29,17 @@ public class MainGUIWindow extends javax.swing.JFrame {
         
         FileSelector.setDialogTitle("Select File");
         
+        
         cipherParser = new CipherFileParser();
         calibrationParser = new CalibrationFileParser();
+        decipherer = new Decipherer(calibrationParser, cipherParser);
         FileNameExtensionFilter textFilter = new FileNameExtensionFilter("*.txt", "txt", "TXT");
         FileSelector.setFileFilter(textFilter);
     }
     
     private final CalibrationFileParser calibrationParser;
     private final CipherFileParser cipherParser;
+    private final Decipherer decipherer;
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -87,7 +90,7 @@ public class MainGUIWindow extends javax.swing.JFrame {
         ExitProgramMenuItem = new javax.swing.JMenuItem();
 
         FileSelector.setDialogType(javax.swing.JFileChooser.CUSTOM_DIALOG);
-        FileSelector.setCurrentDirectory(new java.io.File("C:\\Program Files (x86)\\NetBeans 8.0"));
+        FileSelector.setCurrentDirectory(new java.io.File("/"));
 
         WarningDialog.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         WarningDialog.setForeground(new java.awt.Color(255, 255, 255));
@@ -294,6 +297,11 @@ public class MainGUIWindow extends javax.swing.JFrame {
 
         MapCipherButton.setText("Map Cipher");
         MapCipherButton.setToolTipText("Maps the Calibration Frequency straight across to the Cipher Frequency");
+        MapCipherButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MapCipherButtonActionPerformed(evt);
+            }
+        });
 
         SetGuessToCipherButton.setText("Set Guess to Cipher Text");
         SetGuessToCipherButton.addActionListener(new java.awt.event.ActionListener() {
@@ -512,7 +520,7 @@ public class MainGUIWindow extends javax.swing.JFrame {
         
         try {
             java.io.PrintWriter guessSaver = new java.io.PrintWriter(saveFile.getSelectedFile());
-            //guessSaver.printf(decipherer.getCurrentGuess());
+            guessSaver.printf(decipherer.getCurrentGuess());
         }
         catch (FileNotFoundException ex) {
             System.out.println("File not found: " + ex.getMessage());
@@ -522,6 +530,10 @@ public class MainGUIWindow extends javax.swing.JFrame {
     private void ExitProgramMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitProgramMenuItemActionPerformed
         System.exit(0);
     }//GEN-LAST:event_ExitProgramMenuItemActionPerformed
+
+    private void MapCipherButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MapCipherButtonActionPerformed
+        
+    }//GEN-LAST:event_MapCipherButtonActionPerformed
 
     
     /**
